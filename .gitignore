@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pkl
+.env
+venv/
+env/
+
+# ML Models
+*.joblib
+
+# Node / React
+node_modules/
+build/
+dist/
+
+# Logs
+*.log
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
