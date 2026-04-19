@@ -8,8 +8,24 @@ import os
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-model = joblib.load(os.path.join(os.path.dirname(__file__), "loan_model.pkl"))
-columns = json.load(open(os.path.join(os.path.dirname(__file__), "columns.json")))
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Load model safely
+model_path = os.path.join(BASE_DIR, "loan_model.pkl")
+columns_path = os.path.join(BASE_DIR, "columns.json")
+
+if not os.path.exists(model_path):
+    raise Exception("Model file not found!")
+
+if not os.path.exists(columns_path):
+    raise Exception("Columns file not found!")
+
+model = joblib.load(model_path)
+
+with open(columns_path, "r") as f:
+    columns = json.load(f)
 
 @app.route('/')
 def home():
