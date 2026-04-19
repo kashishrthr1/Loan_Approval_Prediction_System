@@ -3,13 +3,13 @@ from flask_cors import CORS
 import joblib
 import numpy as np
 import json
+import os
 
 app = Flask(__name__)
-CORS(app)    
+CORS(app, resources={r"/*": {"origins": "*"}})
 
-# Load model + columns
-model = joblib.load("loan_model.pkl")
-columns = json.load(open("columns.json"))
+model = joblib.load(os.path.join(os.path.dirname(__file__), "loan_model.pkl"))
+columns = json.load(open(os.path.join(os.path.dirname(__file__), "columns.json")))
 
 @app.route('/')
 def home():
