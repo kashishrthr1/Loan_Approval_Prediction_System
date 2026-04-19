@@ -2,13 +2,9 @@
 __pycache__/
 *.pyc
 *.pyo
-*.pkl
 .env
 venv/
 env/
-
-# ML Models
-*.joblib
 
 # Node / React
 node_modules/
