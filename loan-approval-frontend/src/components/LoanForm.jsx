@@ -106,7 +106,7 @@ export default function LoanForm() {
     const payload = buildPayload(form);
     
     // ✅ Wrap in "data" key to match your API
-    const res = await axios.post('https://loan-approval-prediction-system-1-8yrl.onrender.com', {
+    const res = await axios.post('https://loan-approval-prediction-system-1-8yrl.onrender.com/predict', {
       data: payload
     });
 
